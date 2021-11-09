@@ -1,4 +1,4 @@
-/*LINK GITHUB: https://github.com/joaojhgs/bdLojaVendas*/
+/*LINK GITHUB: https://github.com/joaojhgs/bdLojaVendas */
 
 DROP TABLE IF EXISTS Produtos_Venda;
 DROP TABLE IF EXISTS VENDAS;
