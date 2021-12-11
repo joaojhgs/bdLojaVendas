@@ -23,9 +23,9 @@ Local_N varchar(50));
 
 /*Generalização + relação de pertencimento a filiais*/
 CREATE TABLE FUNCIONARIOS(
-CPF integer primary key, 
+CPF varchar(11) primary key, 
 NOME varchar(100), 
-CTPS integer, 
+CTPS varchar(11), 
 ID integer, 
 IdFilial integer, 
 foreign key (IdFilial) references FILIAIS(ID));
@@ -35,7 +35,7 @@ CREATE TABLE ADM(
 SalarioFixo integer, 
 HorasExtra integer, 
 Bonus integer, 
-FuncionarioCPF integer primary key, 
+FuncionarioCPF varchar(11) primary key, 
 foreign key (FuncionarioCPF) references FUNCIONARIOS(CPF), 
 FilialID integer, foreign key(FilialID) references FILIAIS(ID));
 
@@ -56,11 +56,11 @@ CREATE TABLE VENDEDORES(
 SalarioBase integer, 
 comissao integer, 
 meta integer, 
-FuncionarioCPF integer primary key, 
+FuncionarioCPF varchar(11) primary key, 
 foreign key (FuncionarioCPF) references FUNCIONARIOS(CPF));
 
 CREATE TABLE CLIENTES(
-CPF integer primary key, 
+CPF varchar(11) primary key, 
 Nome varchar(50), 
 Contato varchar(30));
 
@@ -80,10 +80,11 @@ CREATE TABLE VENDAS(
 ID integer primary key, 
 ValTotal integer, 
 Data_V integer, 
-CPFVendedor integer not null, 
-foreign key (CPFVendedor) references VENDEDORES(FuncionarioCPF), 
-CPFCliente integer not null, 
-foreign key (CPFCliente) references CLIENTES(CPF));
+CPFVendedor varchar(11) not null, 
+CPFCliente varchar(11) not null, 
+foreign key (CPFVendedor) references VENDEDORES(FuncionarioCPF),
+foreign key (CPFCliente) references CLIENTES(CPF)
+);
 
 CREATE TABLE Produtos_Venda(
 ProdutoID integer not null, 
@@ -106,7 +107,7 @@ CIDADE varchar(30),
 RuaAv varchar(100), 
 NUMERO integer, 
 CEP integer, 
-FuncionarioCPF integer, 
+FuncionarioCPF varchar(11), 
 foreign key (FuncionarioCPF) references FUNCIONARIOS(CPF) on delete cascade, 
 primary key (CEP, FuncionarioCPF));
 
@@ -115,10 +116,9 @@ ESTADO varchar(30),
 CIDADE varchar(30), 
 RuaAv varchar(100), 
 NUMERO integer, 
-CEP integer, 
-ClienteCPF integer, 
+CEP varchar(8), 
+ClienteCPF varchar(11), 
 foreign key (ClienteCPF) references CLIENTES(CPF) on delete cascade, 
 primary key (CEP, ClienteCPF));
 
 show tables;
-
