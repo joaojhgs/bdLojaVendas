@@ -14,7 +14,7 @@ DELETE FROM CUPONS;
 DELETE FROM MARCAS;
 DELETE FROM FUNCIONARIOS;
 DELETE FROM FILIAIS;
-SET FOREIGN_KEY_CHECKS=0;
+/*SET FOREIGN_KEY_CHECKS=0;*/
 
 /*INSERT DE FILIAIS*/
 INSERT INTO FILIAIS (ID, CapMax, Local_N)
@@ -269,50 +269,71 @@ SELECT * FROM EnderecoClientes;
 
 /*INSERT DE EnderecoFuncionarios*/
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Rio de Janeiro', 'Rua castelo branco', 4567, '94495110', '08850195125');
+VALUES ('Brazil', 'PR', 'Rio de Janeiro', 'Rua castelo branco', 4567, '94495110', '40449597067');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Maringa', 'Rua alecrim dourado', 3572, '78076035', '39843641809');
+VALUES ('Brazil', 'PR', 'Maringa', 'Rua alecrim dourado', 3572, '78076035', '47499310043');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Ubatuba', 'Rua salamaleico andrade', 3458, '49010909', '59673664749');
+VALUES ('Brazil', 'PR', 'Ubatuba', 'Rua salamaleico andrade', 3458, '49010909', '16683570035');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Sao Paulo', 'Avenida padre lendro', 4561, '89680970', '60130408506');
+VALUES ('Brazil', 'PR', 'Sao Paulo', 'Avenida padre lendro', 4561, '89680970', '06268616081');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Pinhais', 'Avenida florianopolis', 7854, '68903119', '64805938048');
+VALUES ('Brazil', 'PR', 'Pinhais', 'Avenida florianopolis', 7854, '68903119', '16997322050');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Buzios', 'Avenida fernando de noronha', 3437, '13902863', '32137414503');
+VALUES ('Brazil', 'PR', 'Buzios', 'Avenida fernando de noronha', 3437, '13902863', '12768937010');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'São José', 'Avenida comendador noberto', 6774, '69309160', '80348465203');
+VALUES ('Brazil', 'PR', 'São José', 'Avenida comendador noberto', 6774, '69309160', '65722999024');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Ponta grossa', 'Rua Roberto peixoto', 3859, '71505600', '49966626468');
+VALUES ('Brazil', 'PR', 'Ponta grossa', 'Rua Roberto peixoto', 3859, '71505600', '32453803050');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Ponta del leste', 'Avenida Tancredo Neves', 1256, '78058396', '87186464335');
+VALUES ('Brazil', 'PR', 'Ponta del leste', 'Avenida Tancredo Neves', 1256, '78058396', '61414985070');
 INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
-VALUES ('Brazil', 'PR', 'Guarapari', 'Rua das gaivotas', 1523, '24476160', '74236220016');
+
+VALUES ('Brazil', 'PR', 'Guarapari', 'Rua Amazonas', 1523, '93224030', '02052068082');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'RO', 'Porto Velho', 'Rua Alexandre Guimarães', 4567, '76804296', '76253443550');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'AM', 'Manaus', 'Rua Pedra Azul', 3572, '69087662', '37108072394');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'AM', 'Manaus', 'Rua Jafé', 3458, '69059592', '70641813120');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'SP', 'Franco da Rocha', 'Rua Fernandópolis', 4561, '07859150', '15384412259');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'AL', 'Maceió', 'Quadra B', 7854, '57086404', '77847279843');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'AM', 'Manaus', 'Rua Rosa Rezende', 3437, '69074730', '98099688503');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'CE', 'Fortaleza', 'Rua da Traíra', 6774, '60835595', '10600604772');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'RJ', 'Niterói', 'Rua Professor Antonio de Souza Queiroz', 3859, '24344101', '03832919171');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'RS', 'Caxias do Sul', 'Rua João Carlos Fonseca', 1256, '95020540', '98662077650');
+INSERT INTO EnderecoFuncionarios (PAIS, ESTADO, CIDADE, RuaAv, NUMERO, CEP, FuncionarioCPF)
+VALUES ('Brazil', 'BA', 'Feira de Santana', 'Rua Fonte Nova', 1523, '44005412', '46922007581');
 SELECT * FROM EnderecoFuncionarios;
 
 
 /*INSERT DE VENDAS*/
 /*O valor total será definido posteriormente, após a definição da relação Produtos_Venda*/
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (1, 154, 10092021, '76253443550', '63988081147');
+VALUES (1, 154, 10092021, '76253443550', '08850195125');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (2, 433, 15092021, '37108072394', '27981124711');
+VALUES (2, 433, 15092021, '37108072394', '39843641809');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (3, 433, 22082021, '70641813120', '95981934447');
+VALUES (3, 433, 22082021, '70641813120', '59673664749');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (4, 677, 19112021, '15384412259', '86985302741');
+VALUES (4, 677, 19112021, '15384412259', '60130408506');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (5, 489, 04032021, '77847279843', '83997121084');
+VALUES (5, 489, 04032021, '77847279843', '64805938048');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (6, 326, 16092021, '98099688503', '31996095654');
+VALUES (6, 326, 16092021, '98099688503', '32137414503');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (7, 430, 21122020, '10600604772', '79998921237');
+VALUES (7, 430, 21122020, '10600604772', '80348465203');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (8, 230, 26092020, '03832919171', '11982039050');
+VALUES (8, 230, 26092020, '03832919171', '49966626468');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (9, 140, 13102021, '98662077650', '11985686256');
+VALUES (9, 140, 13102021, '98662077650', '87186464335');
 INSERT INTO VENDAS (ID, ValTotal, Data_V, CPFVendedor, CPFCliente)
-VALUES (10, 1450, 24062021, '46922007581', '27981716783');
+VALUES (10, 1450, 24062021, '46922007581', '74236220016');
 SELECT * FROM VENDAS;
 
 /*INSERT DE Produtos_Venda*/

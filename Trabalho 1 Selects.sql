@@ -1,0 +1,128 @@
+use bdLojaVendas;
+
+/* 1- LISTA TODOS OS CLIENTES ATIVOS (COM UM COMPRA OU MAIS)*/
+SELECT DISTINCT C.NOME, V.ValTotal, V.Data_V
+FROM CLIENTES C, VENDAS V
+WHERE V.CPFCliente = C.CPF
+	AND (SELECT COUNT(*) FROM Produtos_Venda PV WHERE PV.VendaID = V.ID) > 1;
+    
+/* 2- LISTA TODOS OS CLIENTES QUE COMPRARAM DETERMINADO PRODUTO (MI Airdots)*/
+SELECT C.NOME
+FROM CLIENTES C
+WHERE C.CPF IN (
+	SELECT V.CPFCliente
+    FROM VENDAS V, Produtos_Venda PV
+    WHERE C.CPF = V.CPFCliente
+		AND V.ID = PV.VendaID
+		AND (
+			SELECT P.Nome
+			FROM PRODUTOS P
+            WHERE P.ID = PV.ProdutoID) = 'MI Airdots'
+        );
+
+/* 3- LIST TODOS OS CLIENTES QUE COMPRARAM UM OU OUTRO PRODUTO (MI Airdots OU Torneira Eletrica)*/
+SELECT C.NOME
+FROM CLIENTES C
+WHERE C.CPF IN (
+	SELECT V.CPFCliente
+    FROM VENDAS V, Produtos_Venda PV
+    WHERE C.CPF = V.CPFCliente
+		AND V.ID = PV.VendaID
+		AND (
+			SELECT P.Nome
+			FROM PRODUTOS P
+            WHERE P.ID = PV.ProdutoID) = 'MI Airdots'
+        )
+UNION
+SELECT C.NOME
+FROM CLIENTES C
+WHERE C.CPF IN (
+	SELECT V.CPFCliente
+    FROM VENDAS V, Produtos_Venda PV
+    WHERE C.CPF = V.CPFCliente
+		AND V.ID = PV.VendaID
+		AND (
+			SELECT P.Nome
+			FROM PRODUTOS P
+            WHERE P.ID = PV.ProdutoID) = 'Torneira Eletrica'
+        );
+
+/* 4- LISTA AS MARCAS QUE POSSUEM DOIS OU MAIS PRODUTOS*/
+SELECT DISTINCT M.Nome
+FROM MARCAS M
+WHERE (
+	SELECT count(P.MarcaID)
+    FROM PRODUTOS P
+    WHERE P.MarcaID = M.ID
+    ) >= 2;
+/* 5- LISTA PRODUTOS E SEUS RESPECTIVOS CUPONS APLICAVEIS DE ACORDO COM A MARCA*/
+SELECT DISTINCT P.Nome as nomeProduto,
+	P.Valor as valorProduto,
+    C.Valor as valorCupon,
+    C.UsoMax as usoMaxCupon
+FROM CUPONS C, CuponsAplicaveis CA, PRODUTOS P
+WHERE C.ID = CA.CuponID
+    AND P.ID IN (
+		SELECT P.ID
+        FROM PRODUTOS P, MARCAS M
+        WHERE M.ID = CA.MarcaID
+        AND P.MarcaID = M.ID
+        );
+
+/* 6- LISTA AS FILIAIS QUE POSSUEM 2 OU MAIS FUNCIONARIOS*/
+SELECT *
+FROM FILIAIS F
+WHERE (
+	SELECT COUNT(*)
+	FROM FUNCIONARIOS FU
+	WHERE FU.IdFilial = F.ID
+) > 2;
+
+/* 7- Lista os funcionarios de duas filiais especificas (Mamborê e Maringa)*/
+SELECT DISTINCT F.Local_N as Filial, FU.Nome as NomeFuncionario
+FROM FILIAIS F, FUNCIONARIOS FU
+WHERE FU.IdFilial = F.ID
+	AND FU.IdFilial = 2
+UNION
+SELECT DISTINCT F.Local_N as Filial, FU.Nome as NomeFuncionario
+FROM FILIAIS F, FUNCIONARIOS FU
+WHERE FU.IdFilial = F.ID
+	AND FU.IdFilial = 6;
+
+/* 8- LISTA A LOCALIZAÇÃO DOS FUNCIONARIOS E CLIENTES CADASTRADOS, UTIL PARA MAPAS DE CALOR DE REGIÕES*/
+SELECT EF.PAIS, EF.ESTADO, EF.CIDADE
+FROM VENDEDORES V, EnderecoFuncionarios EF
+WHERE V.FuncionarioCPF = EF.FuncionarioCPF
+UNION
+SELECT EC.PAIS, EC.ESTADO, EC.CIDADE
+FROM CLIENTES C, EnderecoClientes EC
+WHERE C.CPF = EC.ClienteCPF
+GROUP BY ESTADO;
+
+/* 9- LISTA CUPONS QUE POSSUAM UM USO MAXIMO MAIOR QUE 50 OU UM VALOR DE DESCONTO MAIOR QUE 100*/
+SELECT C.Valor, C.UsoMax
+FROM CUPONS C
+WHERE C.UsoMax > 50
+UNION
+SELECT C.Valor, C.UsoMax
+FROM CUPONS C
+WHERE C.Valor > 100;
+
+/* 10- LISTA TODOS OS PRODUTOS COM DESCONTO, SEJA ATRAVÉS DE CUPOM, OU DE DESCONTO PROMOCIONAL (NO CADASTRO DO PRODUTO)*/
+SELECT DISTINCT P.Nome as nomeProduto,
+	P.Valor as valorProduto,
+    C.Valor as valorDesconto
+FROM CUPONS C, CuponsAplicaveis CA, PRODUTOS P
+WHERE C.ID = CA.CuponID
+    AND P.ID IN (
+		SELECT P.ID
+        FROM PRODUTOS P, MARCAS M
+        WHERE M.ID = CA.MarcaID
+        AND P.MarcaID = M.ID
+        )
+UNION
+SELECT DISTINCT P.Nome as nomeProduto,
+	P.Valor as valorProduto,
+    P.Desconto as valorDesconto
+FROM PRODUTOS P
+WHERE P.Desconto > 0;
