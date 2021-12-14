@@ -1,3 +1,4 @@
+/*LINK GITHUB: https://github.com/joaojhgs/bdLojaVendas */
 use bdLojaVendas;
 
 /* 1- LISTA TODOS OS CLIENTES ATIVOS (COM UM COMPRA OU MAIS)*/
